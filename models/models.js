@@ -8,7 +8,7 @@ var protocol = (url[1]||null);
 var dialect = (url[1]||null);
 var port = (url[5]||null);
 var host = (url[4]||null);
-var storage = process.env.DATABASE_STORAGE;
+var storage=process.env.DATABASE_STORAGE;
 
 var Sequelize = require('sequelize');
 
@@ -30,8 +30,9 @@ exports.Quiz = Quiz;
 sequelize.sync().then(function()  {
   Quiz.count().then(function(count) {
     if(count === 0) {
-    Quiz.create({ pregunta: 'Capital de Italia' ,
-                  respuesta: 'Roma'
+    Quiz.create({
+      pregunta: 'Capital de Italia' ,
+      respuesta: 'Roma'
                 })
         .then(function() { console.log('Base de datos inicializada')});
     };
